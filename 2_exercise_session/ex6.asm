@@ -1,5 +1,3 @@
-#TODO
-
 .data
 	string: .string "ABCDEFGH"
 	string_length: .space 4
