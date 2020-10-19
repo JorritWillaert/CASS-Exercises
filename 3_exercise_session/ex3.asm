@@ -22,8 +22,8 @@ callersaveregisterwipe: #Don't modify this function!
 sum_fixme:
 	
 	#TODO
-	addi sp, sp, -16
-	sw s0, 12(sp)
+	#You don't have to store s0, because the callee may not return an other value
+	addi sp, sp, -12
 	sw a0, 8(sp)
 	sw a1, 4(sp)
 	sw ra, 0(sp)
@@ -33,6 +33,8 @@ sum_fixme:
 	lw a1, 4(sp)
 	lw a0, 8(sp)
 	addi sp, sp, 12
+	addi sp, sp, -4
+	sw s0, 0(sp)
 	
 	add 	s0, a0, a1 #Don't modify this line
 	mv	a0, s0 	 #Don't modify this line
