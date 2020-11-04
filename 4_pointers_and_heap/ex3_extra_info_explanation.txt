@@ -1,0 +1,3 @@
+First element is only four bytes (one word) long. This is just a 'begin' pointer which points to the next element on the stack (or to zero if this is the top).
+Then, every next element on the stack requires 12 bytes. The first 4 bytes contain the 'next' pointer, just as in the sentence above. 
+The next 4 bytes contain the element, and the last four bytes contain the 'previous' pointer.
