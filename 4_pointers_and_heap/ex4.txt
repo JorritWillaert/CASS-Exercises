@@ -1,0 +1,4 @@
+sp = callee-save
+If we call a funtion, it is supposed that the stack pointer will point to the same address after it returns. So if a stack pointer increases the stack pointer, 
+it has to decrease it again as well. Therefore, if we create now dynamic memory on the stack, it has to be deleted after the function call (stack pointer has to be
+decreased again). So, it is possible to allocate growing data structures on the stack, but only within a function and is therefore not recommended.
