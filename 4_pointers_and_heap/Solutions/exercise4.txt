@@ -1,0 +1,11 @@
+Allocating dynamic memory on the stack is not possible.
+
+1) The sp register is callee-save, so the allocate_stack function breaks calling convention
+2) That also means that when you call allocate_stack, your function will break calling convention if it doesn't restore the stack pointer
+3) If you do restore the stack pointer, you are also deallocating dynamic memory that has been
+reserved in this function.
+
+In theory, yes, you can allocate on the stack. But then the allocated dynamic memory can never
+live longer than the function itself, since you need to restore the stack pointer (deallocate the meory) before returning in order for the call stack to function correctly.
+
+That makes a simple function such as the stack_create or stack_push from previous exercises impossible to write. They simply can't return addresses to newly allocated stack space - it has to be deallocated first!
