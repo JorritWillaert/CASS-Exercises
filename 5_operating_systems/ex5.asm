@@ -116,6 +116,8 @@ no_pause:
 	mv t0, a1
 	lw a1, duration
 	li a7, 31 #MidiOut
+	lw t5, scale_base
+	add a0, a0, t5 #Add the scale_base to pitch tone!
 	ecall
 	mv a1, t0 #The length of the note
 	ret	
