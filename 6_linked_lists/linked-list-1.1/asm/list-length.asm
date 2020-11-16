@@ -7,5 +7,16 @@
 .globl list_length
 .text
 list_length:
-	#TODO implement
+	beqz a0, uninitialized_list
+	lw t0, 0(a0)
+	li a0, 0 #Counter
+loop:
+	beqz t0, return_length
+	addi a0, a0, 1
+	lw t0, 4(t0)
+	j loop
+return_length:
+	ret
+uninitialized_list:
+	li a0, -1 #UNINITIALIZED_LIST
 	ret
