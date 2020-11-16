@@ -13,8 +13,27 @@ struct List *list_create()
 
 status list_append(struct List *list, int value)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *new_node = malloc(sizeof(struct ListNode));
+    if (new_node == NULL){
+        return OUT_OF_MEMORY;
+    }
+    new_node->value = value;
+    new_node->next = NULL;
+
+    if (list->first==NULL){
+        list->first = new_node;
+    }
+    else{
+        struct ListNode *node = list->first;
+        while (node->next != NULL){
+            node = node->next;
+        }
+        node->next=new_node;
+    }
+    return OK;
 }
 
 int list_length(struct List *list)
