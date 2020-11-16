@@ -38,8 +38,19 @@ status list_append(struct List *list, int value)
 
 int list_length(struct List *list)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *node = list->first;
+    if (node == NULL){
+        return 0;
+    }
+    int length = 1;
+    while (node->next != NULL){
+        node = node->next;
+        length++;
+    }
+    return length;
 }
 
 status list_get(struct List *list, int index, int *value)
