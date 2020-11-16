@@ -7,6 +7,8 @@ out_of_memory: .word 0
 
 .text
 malloc:
+	#INPUT: a0: Number of bytes to allocate
+	#OUTPUT: a0: Pointer to the allocated memory, or 0 if there was not enough space
 	lw t0, out_of_memory
 	beqz t0, .Lcont
 	li a0, 0
@@ -59,6 +61,8 @@ new_chunk:
 #Address of chunk to free in a0
 #next_free always points to the chunk metadata, not the chunk data (chunk data addr = chunk metadata addr + 8)
 free:
+	#INPUT: a0: Address of the chunk to free
+	#OUTPUT: Nothing
 	lw t0, next_free #Address of the next free chunk in t0
 	addi a0, a0, -8  #Move to chunk metadata
 	sw t0, (a0)	  #Store address of next free chunk in this free chunk
