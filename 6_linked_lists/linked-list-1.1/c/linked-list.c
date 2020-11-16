@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//Structures ListNode and List are in the header file
+
 struct List *list_create()
 {
-    //TODO implement
-    exit(-1);
+    struct List *l = malloc(sizeof(struct List));
+    l->first = NULL;
+    return l;
 }
 
 status list_append(struct List *list, int value)
