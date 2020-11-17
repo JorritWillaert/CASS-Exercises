@@ -34,11 +34,11 @@ else:
 	bnez t1, else #While loop
 	sw a0, 4(t2) #Store in the previous node we have, before reaching NULL
 end:
-	li a0, 1 #OK
+	li a0, OK
 	ret
 uninitialized_list:
-	li a0, -1 #UNINITIALIZED_LIST
+	li a0, UNINITIALIZED_LIST
 	ret
 out_of_memory:
-	li a0, -2 #OUT_OF_MEMORY
+	li a0, OUT_OF_MEMORY
 	ret

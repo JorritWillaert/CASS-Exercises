@@ -18,5 +18,5 @@ loop:
 return_length:
 	ret
 uninitialized_list:
-	li a0, -1 #UNINITIALIZED_LIST
+	li a0, UNINITIALIZED_LIST
 	ret
