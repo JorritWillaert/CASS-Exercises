@@ -91,8 +91,39 @@ int list_print(struct List *list)
 
 status list_remove_item(struct List *list, int index)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *node = list->first;
+    struct ListNode *prev_node;
+    if (node == NULL || index < 0){
+        return INDEX_OUT_OF_BOUNDS;
+    }
+    if (index == 0){
+        list->first = node->next;
+        if (list->first == NULL){
+            return INDEX_OUT_OF_BOUNDS;
+        }
+        free(node);
+        return OK;
+    }
+    for (int i = 0; i < index; i++){
+        prev_node = node;
+        node = node->next;
+        if (node == NULL){
+            return INDEX_OUT_OF_BOUNDS;
+        }
+    }
+    struct ListNode *next_node = node->next;
+    if (next_node == NULL){
+        //Node was the last node; No need to link two elements together. Just make prev_node->next = NULL
+        prev_node->next = NULL;
+    }
+    else{
+        prev_node->next = next_node;
+    }
+    free(node);
+    return OK;
 }
 
 status list_delete(struct List *list)
