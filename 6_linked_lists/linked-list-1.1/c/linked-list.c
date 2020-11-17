@@ -77,8 +77,16 @@ status list_get(struct List *list, int index, int *value)
 
 int list_print(struct List *list)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *node = list->first;
+    while (node->next != NULL){
+        fprintf(stderr, "%i ", node->value);
+        node = node->next;
+    }
+    fprintf(stderr, "\n");
+    return OK;
 }
 
 status list_remove_item(struct List *list, int index)

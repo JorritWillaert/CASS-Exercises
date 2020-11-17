@@ -58,6 +58,8 @@ void list_length_test()
 
     fprintf(stderr, " - Testing uninitialized list\n");
     assert(list_length(NULL) == UNINITIALIZED_LIST);
+    fprintf(stderr, " - EXTRA TEST: Printing list --> ");
+    assert(list_print(list) == OK);
 }
 
 void list_get_test()
