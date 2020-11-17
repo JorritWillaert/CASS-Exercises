@@ -55,8 +55,24 @@ int list_length(struct List *list)
 
 status list_get(struct List *list, int index, int *value)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *node = list->first;
+    if (node == NULL || index < 0){
+        return INDEX_OUT_OF_BOUNDS;
+    }
+    for (int i = 0; i < index; i++){
+        node = node->next;
+        if (node == NULL){
+            return INDEX_OUT_OF_BOUNDS;
+        }
+    }
+    if (value == NULL){
+        return UNINITIALIZED_RETVAL;
+    }
+    *value = node->value;
+    return OK;
 }
 
 int list_print(struct List *list)
