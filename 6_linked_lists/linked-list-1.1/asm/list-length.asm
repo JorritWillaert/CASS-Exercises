@@ -7,6 +7,8 @@
 .globl list_length
 .text
 list_length:
+	#INPUT: a0: list
+	#OUTPUT: a0: UNINITIALIZED_LIST(-1) or length
 	beqz a0, uninitialized_list
 	lw t0, 0(a0)
 	li a0, 0 #Counter
