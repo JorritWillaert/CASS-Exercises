@@ -132,7 +132,7 @@ status list_delete(struct List *list)
         return UNINITIALIZED_LIST;
     }
     struct ListNode *node = list->first;
-    struct ListNode *next_node = node;
+    struct ListNode *next_node;
     if (node != NULL){
         while (node->next != NULL){
             next_node = node->next;
