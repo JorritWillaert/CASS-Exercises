@@ -128,8 +128,21 @@ status list_remove_item(struct List *list, int index)
 
 status list_delete(struct List *list)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    struct ListNode *node = list->first;
+    struct ListNode *next_node = node;
+    if (node != NULL){
+        while (node->next != NULL){
+            next_node = node->next;
+            free(node);
+            node = next_node;
+        }
+    }
+    free(node);
+    free(list);
+    return OK;
 }
 
 status list_insert(struct List *list, int index, int value)
