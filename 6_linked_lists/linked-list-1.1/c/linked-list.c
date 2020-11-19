@@ -153,14 +153,14 @@ status list_insert(struct List *list, int index, int value)
     if (index < 0){
         return INDEX_OUT_OF_BOUNDS;
     }
-    struct ListNode *node = list->first;
     struct ListNode *new_node = malloc(sizeof(struct ListNode));
     if (new_node == NULL){
         return OUT_OF_MEMORY;
     }
+    struct ListNode *node = list->first;
+    new_node->value = value;
     if (index == 0){
         list->first = new_node;
-        new_node->value = value;
         if (node != NULL){
             new_node->next = node;
         }
@@ -179,7 +179,6 @@ status list_insert(struct List *list, int index, int value)
         return INDEX_OUT_OF_BOUNDS;
     }
 
-    new_node->value = value;
     if (node->next == NULL){
         new_node->next = NULL;
     } else{
