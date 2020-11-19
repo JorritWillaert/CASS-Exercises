@@ -147,6 +147,44 @@ status list_delete(struct List *list)
 
 status list_insert(struct List *list, int index, int value)
 {
-    //TODO implement
-    exit(-1);
+    if (list == NULL){
+        return UNINITIALIZED_LIST;
+    }
+    if (index < 0){
+        return INDEX_OUT_OF_BOUNDS;
+    }
+    struct ListNode *node = list->first;
+    struct ListNode *new_node = malloc(sizeof(struct ListNode));
+    if (new_node == NULL){
+        return OUT_OF_MEMORY;
+    }
+    if (index == 0){
+        list->first = new_node;
+        new_node->value = value;
+        if (node != NULL){
+            new_node->next = node;
+        }
+        return OK;
+    }
+
+    for (int i = 0; i < index - 1; i++){
+        if (node == NULL){
+            free(new_node);
+            return INDEX_OUT_OF_BOUNDS;
+        }
+        node = node->next;
+    }
+    if (node == NULL){
+        free(new_node);
+        return INDEX_OUT_OF_BOUNDS;
+    }
+
+    new_node->value = value;
+    if (node->next == NULL){
+        new_node->next = NULL;
+    } else{
+        new_node->next = node->next;
+    }
+    node->next = new_node;
+    return OK;
 }
