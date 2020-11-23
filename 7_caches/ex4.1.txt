@@ -1,0 +1,12 @@
+Suppose a computer’s address size is k bits (using byte addressing), the cache data size is S bytes,
+the block size is B bytes, and the cache is A-way set-associative. Assume that B is a power of two, so B=2**b.
+Figure out what the following quantities are in terms of S, B, A, b and k.
+
+--- The number of sets in the cache = S/(B * A)
+--- The number of index bits in the address = log_base2(S/(B * A))
+--- The number of bits to implement the cache = S/B blocks * (1 valid bit + (k - log_base2(S/(B*A))) tag bits + 8 * B data bits per block)
+
+Address: Tag - Index - Offset (tag and offset must be saved in the cache)
+Offset = b = log_base2(B)
+Index = log_base2(S/(B * A)) = number of sets in the cache - number of bits needed for the associative
+Tag = k - (log_base2(S/(B * A)) + b) = length of the computer's address size - (index + offset)
