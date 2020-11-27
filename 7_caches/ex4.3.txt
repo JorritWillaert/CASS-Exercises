@@ -1,0 +1,11 @@
+Associativity usually improves the hit ratio, but not always. Consider a direct mapped cache with 16 1-word blocks
+and a 2-way set-associative cache with 1-word block size and a total size of 16 words. Find a sequence of memory references
+for which the associative cache experiences more misses than the direct mapped cache.
+
+Access block 0, then block 8, then block 16, then block 0, then block 8
+Assume that in direct mapped block 0 and 16 are mapped on the same set and block 8 is a different set (modulo 16).
+Assume that in associativity mapped block 0, 8 and 16 can be mapped on two possible sets.
+Use LRU as policy to decide which block to evict.
+
+Direct mapped: Miss, miss, miss, miss, hit
+Associativity mapped: Miss, miss, miss, miss, miss
