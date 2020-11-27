@@ -1,0 +1,23 @@
+Consider a processor with a 32 bits addressing mode and a direct mapped cache, with 8-word block size and a total size of 1024 blocks.
+Calculate how many bits of the address are used to tag a block, to select the block, a word in the block, a byte in the word.
+The sum of these numbers must be 32! Calculate the total size needed to implement this cache.
+
+See ex4.1.txt
+
+Offset = b = log_base2(B)
+Index = log_base2(S/(B * A))
+Tag = k - (log_base2(S/(B * A)) + b)
+
+S, B, A, b and k.
+B = 8 words = 16 bytes --> b = log_base2(16) = 4
+S = B * number of blocks cache = 16 * 1024 = 16,384
+A = 1 (direct-mapped)
+k = 32
+
+Tag = 32 - (log_base2(1024) + 4) = 18
+Bits to select a word = Index = 10
+Bits to select a word in a block = log_base2(8) = 3
+Bits to select a byte in the word = 1
+
+The number of bits to implement the cache   = S/B blocks * (1 valid bit + (k - log_base2(S/(B*A)) - b) tag bits + 8 * B data bits per block)
+                                            = 1024 * (1 + (32 - 10 - 4) + 8 * 16) = 150,528 bits
