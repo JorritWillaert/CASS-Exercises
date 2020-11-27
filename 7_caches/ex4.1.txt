@@ -4,7 +4,7 @@ Figure out what the following quantities are in terms of S, B, A, b and k.
 
 --- The number of sets in the cache = S/(B * A)
 --- The number of index bits in the address = log_base2(S/(B * A))
---- The number of bits to implement the cache = S/B blocks * (1 valid bit + (k - log_base2(S/(B*A))) tag bits + 8 * B data bits per block)
+--- The number of bits to implement the cache = S/B blocks * (1 valid bit + (k - log_base2(S/(B*A)) - b) tag bits + 8 * B data bits per block)
 
 Address: Tag - Index - Offset (tag and offset must be saved in the cache)
 Offset = b = log_base2(B)
