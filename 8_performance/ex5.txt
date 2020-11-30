@@ -22,3 +22,9 @@ Indicate hazards and add nop (no operation) instructions to eliminate them.
     5 nop
     6 nop
     7 or t1, t1, t2
+
+Exercise 5.3: Assume there is full forwarding in the pipelined processor. Indicate the remaining hazards and add nop (no operation)
+instructions to eliminate them. Compared the speedup achieved by adding full forwarding to a pipeline with no forwarding.
+There are no hazards anymore. (Caution: if there were loads as well, then hazards could still arise)
+The execution time without forwarding = 5 * 250ps + 6 * 250ps = 2750ps
+The execution time with full forwarding = 5 * 300ps + 2 * 300ps = 2100ps (Speedup = 650ps)
