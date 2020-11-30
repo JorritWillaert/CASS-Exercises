@@ -1,0 +1,14 @@
+The code below describes a simple function in RISC-V assembly.
+    1 or t1, t2, t3
+    2 or t2, t1, t4
+    3 or t1, t1, t2
+Assume the following cycle times for each of the options related to forwarding;
+Without forwarding:250ps
+With Full Forwarding:300ps
+
+Exercise 5.1: Indicate the dependencies and their type: Read After Write (RAW), Write After Read (WAR), Write after Write (WAW).
+- RAW on t1 from I1 to I2 and I3
+- RAW on t2 from I2 to I3
+- WAR on t2 from I1 to I2
+- WAR on t1 from I2 to I3
+- WAW on t1 from I1 to I3
