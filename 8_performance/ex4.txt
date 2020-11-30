@@ -1,0 +1,16 @@
+Consider a processor where the individual instruction fetch, decode, execute, memory, and writeback
+stages in the datapath have the following latencies:
+IF      ID      EX      MEM     WB
+150ps   50ps    200ps   100ps   100ps
+
+We assume a classic RISC instruction set where all 5 stages are needed for loads (lw), but the writeback [WB] stage is not necessarily
+needed for stores (sw) and the memory [MEM] stage is not necessarily needed for register (R-format) instructions.
+Instead of a single-cycle organization, we can use a multi-cycle organization where each instruction takes multiple clock cycles but one
+instruction finishes before another is fetched. In this organization, an instruction only goes through stages it actually needs
+(e.g. sw only takes four clock cycles because it does not need the [WB] stage). Compare clock cycle times and execution times with
+single-cycle, multi-cycle, and pipelined organization.
+
+Exercise 4.1: Calculate the clock cycle time for a single-cycle, multi-cycle, and pipelined implementation of this datapath.
+- Clock cycle time for a single-cycle implementation = 150ps + 50ps + 200ps + 100ps + 100ps = 600ps
+- Clock cycle time for a multi-cycle implementation = sum of latencies over all used stages (dynamic clock cycle time)
+- Clock cycle time for a pipelined implementation = latency of the longest stage = 200ps
