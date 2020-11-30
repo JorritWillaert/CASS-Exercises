@@ -12,3 +12,13 @@ Exercise 5.1: Indicate the dependencies and their type: Read After Write (RAW), 
 - WAR on t2 from I1 to I2
 - WAR on t1 from I2 to I3
 - WAW on t1 from I1 to I3
+
+Exercise 5.2: Assume there is no forwarding in the pipelined processor.
+Indicate hazards and add nop (no operation) instructions to eliminate them.
+    1 or t1, t2, t3
+    2 nop
+    3 nop
+    4 or t2, t1, t4
+    5 nop
+    6 nop
+    7 or t1, t1, t2
