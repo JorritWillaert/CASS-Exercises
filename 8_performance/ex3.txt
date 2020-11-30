@@ -12,8 +12,11 @@ Exercise 3.1: What is the clock cycle time in a pipelined and single-cycle non-p
 - Datapath b: clock cycle time in a pipelined processor = latency of longest stage = 200ps
 
 Exercise 3.2: What is the total latency of a lw instruction in a pipelined and single-cycle non-pipelined processor?
-- Datapath a: latency in a single-cycle non-pipelined processor = latency in a pipelined processor = 1650ps
-- Datapath b: latency in a single-cycle non-pipelined processor = latency in a pipelined processor = 800ps
+- Datapath a: latency in a single-cycle non-pipelined processor = 1650ps
+- Datapath b: latency in a single-cycle non-pipelined processor = 800ps
+
+- Datapath a: latency in a single-cycle pipelined processor = 5 * 500ps = 2500ps
+- Datapath b latency in a single-cycle pipelined processor = 5 * 200ps = 1000ps
 
 Exercise 3.3: If we can split one stage of the pipelined datapath into two new stages, each with half the latency of the original stage,
 which stage would you split and what is the new clock cycle time of the processor?
