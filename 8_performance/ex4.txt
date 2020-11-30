@@ -34,3 +34,14 @@ Based on these numbers, which design would you prefer? Explain.
 
 Based on these numbers, a multi-cycle implementation would be preferred since this minimizes the latency of a single instruction.
 However, a pipelined implementation is preferred if we consider the execution of a lot instructions, since this improves the throughput.
+
+Exercise 4.3: Consider the following RISC-V program:
+    1 addi t0, zero , 10
+    2 sw zero , 4(t1)
+    3 lw t2, 10(t3)
+For each of the 3 CPU designs (single-cycle, multi-cycle, pipelined), we provide a grid below where the horizontal axis represents time
+(every cell is 100 ps), and the vertical axis lists the instruction stream. First draw the clock signal indicating at which time intervals
+a new CPU cycle starts, and then visualize how the processor executes the instruction stream over time. Clearly indicate the start and end
+of each of the 5 datapath stages (IF, ID, EX, MEM, WB) for all instructions. Note: you can assume the CPU starts from a clean state
+(e.g., after a system reset).
+See ex4.3.docx and ex4.3.JPG
