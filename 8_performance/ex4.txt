@@ -14,3 +14,23 @@ Exercise 4.1: Calculate the clock cycle time for a single-cycle, multi-cycle, an
 - Clock cycle time for a single-cycle implementation = 150ps + 50ps + 200ps + 100ps + 100ps = 600ps
 - Clock cycle time for a multi-cycle implementation = sum of latencies over all used stages (dynamic clock cycle time)
 - Clock cycle time for a pipelined implementation = latency of the longest stage = 200ps
+
+Exercise 4.2: What are the best and worst case total latencies for an instruction in each of the 3 designs
+(single cycle, multi-cycle, pipelined)? Note: express instruction latency both in number of cycles as well as in total time (ps).
+Based on these numbers, which design would you prefer? Explain.
+- Best case latency for a single-cycle implementation = 600ps = worst case latency for a single-cycle implementation.
+- Number of cycles for a single-cycle implementation = 1
+
+- Best case latency for a multi-cycle implementation = 150ps + 50ps + 200ps = 400ps
+- Number of cycles for a multi-cycle implementation = 3
+    --> IF, ID and EX always needed. A branch instruction does not need the MEM and WB stage, so the best case latency is the
+        sum over IF, ID and EX.
+- Worst case latency for a multi-cycle implementation = 150ps + 50ps + 200ps + 100ps + 100ps = 600ps
+- Number of cycles for a multi-cycle implementation = 5
+    --> All stages are needed for a load instruction.
+
+- Best case latency for a pipelined implementation = 600ps = worst case latency for a pipelined implementation.
+- Number of cycles for a pipelined implementation = 5
+
+Based on these numbers, a multi-cycle implementation would be preferred since this minimizes the latency of a single instruction.
+However, a pipelined implementation is preferred if we consider the execution of a lot instructions, since this improves the throughput.
