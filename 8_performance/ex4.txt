@@ -12,7 +12,7 @@ single-cycle, multi-cycle, and pipelined organization.
 
 Exercise 4.1: Calculate the clock cycle time for a single-cycle, multi-cycle, and pipelined implementation of this datapath.
 - Clock cycle time for a single-cycle implementation = 150ps + 50ps + 200ps + 100ps + 100ps = 600ps
-- Clock cycle time for a multi-cycle implementation = sum of latencies over all used stages (dynamic clock cycle time)
+- Clock cycle time for a multi-cycle implementation = latency of the longest stage = 200ps
 - Clock cycle time for a pipelined implementation = latency of the longest stage = 200ps
 
 Exercise 4.2: What are the best and worst case total latencies for an instruction in each of the 3 designs
@@ -21,11 +21,10 @@ Based on these numbers, which design would you prefer? Explain.
 - Best case latency for a single-cycle implementation = 600ps = worst case latency for a single-cycle implementation.
 - Number of cycles for a single-cycle implementation = 1
 
-- Best case latency for a multi-cycle implementation = 150ps + 50ps + 200ps = 400ps
-- Number of cycles for a multi-cycle implementation = 3
-    --> IF, ID and EX always needed. A branch instruction does not need the MEM and WB stage, so the best case latency is the
-        sum over IF, ID and EX.
-- Worst case latency for a multi-cycle implementation = 150ps + 50ps + 200ps + 100ps + 100ps = 600ps
+- Best case latency for a multi-cycle implementation (R-format) = 4 * 200 ps = 800ps
+- Number of cycles for a multi-cycle implementation = 4
+    --> IF, ID, EX and WB are used.
+- Worst case latency for a multi-cycle implementation = 5 * 200 ps = 1000ps
 - Number of cycles for a multi-cycle implementation = 5
     --> All stages are needed for a load instruction.
 
@@ -44,4 +43,15 @@ For each of the 3 CPU designs (single-cycle, multi-cycle, pipelined), we provide
 a new CPU cycle starts, and then visualize how the processor executes the instruction stream over time. Clearly indicate the start and end
 of each of the 5 datapath stages (IF, ID, EX, MEM, WB) for all instructions. Note: you can assume the CPU starts from a clean state
 (e.g., after a system reset).
-See ex4.3.docx and ex4.3.JPG
+See ex4.3.JPG
+
+Exercise 4.4: What is the total time and cycles needed to execute the above RISC-V program from question (4.3) for each of the three
+CPU designs? What if we add 50 no-operation instructions (add zero, zero, zero)? Provide a formula to explain your answer.
+Single-cycle design: Total time = 3 * 600ps = 1800ps. Number of cycles = 3
+Single-cycle design - add 50 nop's: Total time = (3 + 50) * 600ps = 31,800ps. Number of cycles = 53
+
+Multi-cycle design: Total time = (4 + 4 + 5) * 200ps = 2600ps. Number of cycles = 13
+Multi-cycle design - add 50 nop's: Total time =(4 + 4 + 5) * 200ps + (50 * 4) * 200ps = 42,600ps. Number of cycles = 213
+
+Pipelined design: Total time = 5 * 200ps + 2 * 200ps = 1400ps. Number of cycles = 7
+Pipelined design - add 50 nop's: Total time = 5 * 200ps + 2 * 200ps + 50 * 200ps = 11,400ps. Number of cycles = 57
