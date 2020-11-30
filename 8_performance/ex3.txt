@@ -1,0 +1,22 @@
+In this exercise we examine how pipelining affects the clock cycle time of the processor. Problems in
+this exercise assume that individual stages of the datapaths a and b have the following latencies:
+    IF      ID      EX      MEM     WB
+a   300ps   400ps   350ps   500ps   100ps
+b   200ps   150ps   120ps   190ps   140ps
+
+Exercise 3.1: What is the clock cycle time in a pipelined and single-cycle non-pipelined processor?
+- Datapath a: clock cycle time in a single-cycle non-pipelined processor = 300ps + 400ps + 350ps + 500ps + 100ps = 1650ps
+- Datapath b: clock cycle time in a single-cycle non-pipelined processor = 200ps + 150ps + 120ps + 190ps + 140ps = 800ps
+
+- Datapath a: clock cycle time in a pipelined processor = latency of longest stage = 500ps
+- Datapath b: clock cycle time in a pipelined processor = latency of longest stage = 200ps
+
+Exercise 3.2: What is the total latency of a lw instruction in a pipelined and single-cycle non-pipelined processor?
+- Datapath a: latency in a single-cycle non-pipelined processor = latency in a pipelined processor = 1650ps
+- Datapath b: latency in a single-cycle non-pipelined processor = latency in a pipelined processor = 800ps
+
+Exercise 3.3: If we can split one stage of the pipelined datapath into two new stages, each with half the latency of the original stage,
+which stage would you split and what is the new clock cycle time of the processor?
+Split the longest stage.
+- Datapath a: split the MEM stage --> New clock cycle time in a pipelined processor = 400ps
+- Datapath b: split the IF stage --> New clock cycle time in a pipelined processor = 190ps
