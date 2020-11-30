@@ -18,4 +18,14 @@ Line 6 gives a hazard:
 lw t4, 8(t0):   IF      ID      EX      MEM (Now available) WB
 add t5, t1, t4: IF      ID (Not yet available)
 --> Insert nop
-Total of 9 instructions = 5 + 8 = 13 (7 instructions + 2 stall cycles + 4 latency (5 pipeline stages))
+Total of 9 instructions = 5 + 8 = 13 cycles (7 instructions + 2 stall cycles + 4 latency (5 pipeline stages))
+
+Exercise 6.2: Reorganize the code to optimize the performance? (Hint: try to remove the stalls)
+    1 lw t1, 0(t0)
+    2 lw t2, 4(t0)
+    3 lw t4, 8(t0)
+    4 add t3, t1, t2
+    5 sw t3, 12(t0)
+    6 add t5, t1, t4
+    7 sw t5, 16(t0)
+Total of 7 instructions = 5 + 6 = 11 cycles
