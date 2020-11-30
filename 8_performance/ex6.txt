@@ -1,0 +1,21 @@
+The code below describes a simple function in RISC-V assembly(A = B + E; C = B + F;).
+    1 lw t1, 0(t0)
+    2 lw t2, 4(t0)
+    3 add t3, t1, t2
+    4 sw t3, 12(t0)
+    5 lw t4, 8(t0)
+    6 add t5, t1, t4
+    7 sw t5, 16(t0)
+
+Exercise 6.1: Assume the above program will be executed on a 5-stage pipelined processor with forwarding and hazard detection.
+How many clock cycles will it take to correctly run this RISC-V code?
+Line 3 gives a hazard:
+lw t2, 4(t0):   IF      ID      EX      MEM (Now available) WB
+add t3, t1, t2: IF      ID (Not yet available)
+--> Insert nop
+
+Line 6 gives a hazard:
+lw t4, 8(t0):   IF      ID      EX      MEM (Now available) WB
+add t5, t1, t4: IF      ID (Not yet available)
+--> Insert nop
+Total of 9 instructions = 5 + 8 = 13 (7 instructions + 2 stall cycles + 4 latency (5 pipeline stages))
